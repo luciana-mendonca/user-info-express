@@ -5,13 +5,16 @@
     <title></title>
   </head>
   <body>
-    <h1>Index Page</h1>
-    <div class="userKey">
-      <ul>
-        <% userList.forEach(function(name) { %>
-          <li><%= name.firstname %></li>
-        <% }); %>
-      </ul>
+    <%- include('layout'); -%>
+    <div class="container">
+      <h1>All Users</h1>
+      <div class="userKey">
+        <ul>
+          <% userList.forEach(function(userData) { %>
+            <li class="row"><%= userData.firstname + ' ' + userData.lastname + ' - ' + userData.email %></li>
+          <% }); %>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
