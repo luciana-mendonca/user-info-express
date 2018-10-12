@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Index Page</h1>
+    <div class="userKey">
+      <ul>
+        <% userList.forEach(function(name) { %>
+          <li><%= name.firstname %></li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>
