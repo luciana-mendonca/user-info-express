@@ -1,8 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|Oswald|Playfair+Display|Yesteryear');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #b8bad6;
+  background-repeat: no-repeat;
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.search-form {
+  margin: 0 auto;
+  margin-top: 30%;
+  width: 100%;
+}
+
+.btn-custom {
+  margin-top: 5%;
+  width: 20%;
+  background-color: #bdfbfe;
+  border-color: transparent;
+}
+
+.btn-custom:hover {
+  background-color: #624f9c;
+  color: #fff;
 }
