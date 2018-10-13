@@ -4,13 +4,33 @@ body {
   background-color: #b8bad6;
   background-repeat: no-repeat;
   font-family: 'Playfair Display', serif;
-  overflow: hidden;
 }
 
 h1 {
+  font-family: 'Yesteryear', cursive;
   color: #fff;
+  font-size: 5rem;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.user-box div {
+  font-size: 1.4em;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 5%;
+  text-align: center;
+}
+
+.user-box img {
+  max-width: 50%;
+}
+
+.user-box div:hover {
+  background-color: #bff0ef;
+  box-shadow: 5px 5px 28px gray;
 }
 
 .search-form {
@@ -24,6 +44,7 @@ h1 {
   width: 20%;
   background-color: #bdfbfe;
   border-color: transparent;
+  border-radius: 0px;
 }
 
 .btn-custom:hover {
