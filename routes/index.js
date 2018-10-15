@@ -30,7 +30,7 @@ router.post('/search', function(request, response) {
     var searchTerm = request.body.userInput;
     for (var i = 0; i < userList.length; i++) {
       var fullName = userList[i].firstname + ' ' + userList[i].lastname;
-      if (userList[i].firstname.indexOf(searchTerm) > -1 || userList[i].lastname.indexOf(searchTerm) > -1 || fullName === searchTerm) {
+      if (userList[i].firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || userList[i].lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || fullName.toLowerCase() === searchTerm.toLowerCase()) {
         searchResult.push(userList[i]);
       }
     }
