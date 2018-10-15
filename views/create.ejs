@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="/public/images/tab-icon.png"/>
+    <title>Create User</title>
+  </head>
+  <body>
+    <%- include('layout'); -%>
+    <div class="container">
+      <h1>Create User</h1>
+      <form action="/create" method="post">
+        <div class="form-group">
+          <label for="name">First Name: </label>
+          <input class="form-control" name="newUserFirstName" type="text" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name: </label>
+          <input class="form-control" name="newUserLastName" type="text" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" name="newUserEmail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <button type="submit" class="btn btn-custom mb-2">Add User</button>
+      </form>
+    </div>
+  </body>
+</html>

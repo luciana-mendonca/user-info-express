@@ -39,9 +39,36 @@ router.post('/search', function(request, response) {
 });
 
 // Results
-
 router.get('/results', function(request, response) {
   response.render('results');
+});
+
+// Create new user
+router.get('/create', function(request, response) {
+  response.render('create');
+});
+
+router.post('/create', function(request, response) {
+  fs.readFile('./users.json', 'utf-8', function(error, data) {
+    if (error) {
+      throw error;
+    }
+    var userList = JSON.parse(data);
+    var newUser = {
+      firstname: request.body.newUserFirstName,
+      lastname: request.body.newUserLastName,
+      email: request.body.newUserEmail
+    }
+    userList.push(newUser);
+    var userJsonToString = JSON.stringify(userList, null, 2);
+
+    fs.writeFile('./users.json', userJsonToString, 'utf-8', function(error) {
+      if (error) {
+        throw error;
+      }
+    });
+    response.redirect('/');
+  });
 });
 
 module.exports = router;

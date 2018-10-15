@@ -18,5 +18,15 @@
     "firstname": "Kamalani",
     "lastname": "Georgy",
     "email": "georgy.porgy@gmail.com"
+  },
+  {
+    "firstname": "Mary",
+    "lastname": "Smith",
+    "email": "mary@gmail.com"
+  },
+  {
+    "firstname": "John",
+    "lastname": "Smith",
+    "email": "john@gmail.com"
   }
 ]
