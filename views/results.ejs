@@ -10,16 +10,14 @@
     <div class="container">
       <h1>Search Results</h1>
       <div class="container">
-        <div>
-          <div class="row user-box">
-            <% searchResult.forEach(function(userData) { %>
-              <div class="col-md-5 col-md-offset-2">
-              <img src='/public/images/user.png'>
-              <p><%= userData.firstname + ' ' + userData.lastname %></p>
-              <p><%= userData.email %></p></div>
-            <% }); %>
-          </div>
-        </div>
+        <div class="row user-box">
+          <% searchResult.forEach(function(userData) { %>
+            <div class="col-md-5 col-md-offset-2">
+            <img src='/public/images/user.png'>
+            <p><%= userData.firstname + ' ' + userData.lastname %></p>
+            <p><%= userData.email %></p></div>
+          <% }); %>
+      </div>
       </div>
     </div>
   </body>

@@ -21,16 +21,16 @@ router.get('/search', function(request, response) {
 });
 
 router.post('/search', function(request, response) {
-  console.log(request.body.userInput);
   fs.readFile('./users.json', 'utf-8', function (error, data){
     if (error) {
       throw error;
     }
     var userList = JSON.parse(data);
-    console.log(userList);
     var searchResult = [];
+    var searchTerm = request.body.userInput;
     for (var i = 0; i < userList.length; i++) {
-      if (userList[i].firstname.indexOf(request.body.userInput) > -1 || userList[i].lastname.indexOf(request.body.userInput) > -1){
+      var fullName = userList[i].firstname + ' ' + userList[i].lastname;
+      if (userList[i].firstname.indexOf(searchTerm) > -1 || userList[i].lastname.indexOf(searchTerm) > -1 || fullName === searchTerm) {
         searchResult.push(userList[i]);
       }
     }
