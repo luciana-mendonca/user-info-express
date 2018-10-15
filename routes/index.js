@@ -32,7 +32,7 @@ router.post('/search', function(request, response) {
       var fullName = userList[i].firstname + ' ' + userList[i].lastname;
       if (userList[i].firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || userList[i].lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || fullName.toLowerCase() === searchTerm.toLowerCase()) {
         searchResult.push(userList[i]);
-      }
+      } 
     }
     response.render('results', {searchResult});
   });
