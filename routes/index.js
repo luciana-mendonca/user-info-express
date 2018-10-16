@@ -1,18 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-var jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
 
-var $ = jQuery = require('jquery')(window);
-
-/* GET home page. */
-$(document).ready(function() {
-  console.log('working!');
-});
 // All Users
 router.get('/', function(request, response) {
   fs.readFile('./users.json', 'utf-8', function (error, data){
@@ -44,6 +33,25 @@ router.post('/search', function(request, response) {
       }
     }
     response.render('results', {searchResult});
+  });
+});
+
+// Search box autocomplete
+router.post('/autocomplete', function(request, response) {
+  fs.readFile('./users.json', 'utf-8', function (error, data){
+    if (error) {
+      throw error;
+    }
+    var userList = JSON.parse(data);
+    var searchResult = [];
+    var searchTerm = request.body.userInput;
+    for (var i = 0; i < userList.length; i++) {
+      var fullName = userList[i].firstname + ' ' + userList[i].lastname;
+      if (userList[i].firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || userList[i].lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || fullName.toLowerCase() === searchTerm.toLowerCase()) {
+        searchResult.push(userList[i]);
+      }
+    }
+    response.send(searchResult);
   });
 });
 
