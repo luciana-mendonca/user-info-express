@@ -1,9 +1,15 @@
+var lastCall;
+var suggestions = [];
 $("#user-input").keyup(function() {
     var userInput = $(this).val();
-    $("#sugestions").empty();
-    $.post('/autocomplete', {userInput:userInput}, function (response, status) {
-      for (var i = 0; i < response.length; i++) {
-        $("#sugestions").append("<option value='" + response[i].firstname + " " + response[i].lastname + "'></option>")
-      }
-    });
+    if(lastCall === undefined || (Date.now() - lastCall) >= 300 ) {
+      $.post('/autocomplete', {userInput:userInput}, function (response, status) {
+        suggestions = response;
+        lastCall = Date.now();
+      });
+    }
+    $("#suggestions").empty();
+    for (var i = 0; i < suggestions.length; i++) {
+      $("#suggestions").append("<option value='" + suggestions[i].firstname + " " + suggestions[i].lastname + "'></option>")
+    }
 });
