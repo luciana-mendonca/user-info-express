@@ -2,17 +2,15 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-/* GET home page. */
-
 // All Users
 router.get('/', function(request, response) {
-    fs.readFile('./users.json', 'utf-8', function (error, data){
-      if (error) {
-        throw error;
-      }
-      var userList = JSON.parse(data);
-      response.render('index', {userList});
-    });
+  fs.readFile('./users.json', 'utf-8', function (error, data){
+    if (error) {
+      throw error;
+    }
+    var userList = JSON.parse(data);
+    response.render('index', {userList});
+  });
 });
 
 // Search bar
@@ -32,9 +30,28 @@ router.post('/search', function(request, response) {
       var fullName = userList[i].firstname + ' ' + userList[i].lastname;
       if (userList[i].firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || userList[i].lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || fullName.toLowerCase() === searchTerm.toLowerCase()) {
         searchResult.push(userList[i]);
-      } 
+      }
     }
     response.render('results', {searchResult});
+  });
+});
+
+// Search box autocomplete
+router.post('/autocomplete', function(request, response) {
+  fs.readFile('./users.json', 'utf-8', function (error, data){
+    if (error) {
+      throw error;
+    }
+    var userList = JSON.parse(data);
+    var searchResult = [];
+    var searchTerm = request.body.userInput;
+    for (var i = 0; i < userList.length; i++) {
+      var fullName = userList[i].firstname + ' ' + userList[i].lastname;
+      if (userList[i].firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || userList[i].lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || fullName.toLowerCase() === searchTerm.toLowerCase()) {
+        searchResult.push(userList[i]);
+      }
+    }
+    response.send(searchResult);
   });
 });
 
